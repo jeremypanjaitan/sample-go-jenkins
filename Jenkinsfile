@@ -14,7 +14,7 @@ pipeline{
         }
         stage("Git Clone"){
             steps{
-                git branch: "${branch}", url: "${scmUrl"
+                git branch: "${branch}", url: "${scmUrl}"
             }
         }
         stage("Go Test"){
