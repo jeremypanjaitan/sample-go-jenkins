@@ -5,21 +5,17 @@ pipeline{
         root =  "/usr/local/go/bin/go"
         branch =  "master"
         scmUrl = "https://github.com/jeremypanjaitan/sample-go-jenkins.git"
+        dockerImageName = "sample-go-jenkins"
     }
     stages{
-        stage("Go Version"){
+        stage("Docker build"){
             steps{
-                sh "${root} version"
+                sh "docker build -t ${dockerImageName} ."
             }
         }
-        stage("Git Clone"){
+        stage("Docker run"){
             steps{
-                git branch: "${branch}", url: "${scmUrl}"
-            }
-        }
-        stage("Go Test"){
-            steps{
-                sh "${root} test ./... -cover"
+                sh "docker run ${dockerImageName}"
             }
         }
     }
