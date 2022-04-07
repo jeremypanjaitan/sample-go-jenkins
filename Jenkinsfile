@@ -8,13 +8,13 @@ node {
     git url: 'https://github.com/jeremypanjaitan/sample-go-jenkins.git' 
 
     stage 'preTest'
-    sh '${root} version'
+    sh "${root} version"
 
     stage 'Test'
-    sh '${root} test ./... -cover'
+    sh "${root} test ./... -cover"
 
     stage 'Build'
-    sh '${root} build ./...'
+    sh "${root} build ./..."
 
     stage 'Deploy'
 }
